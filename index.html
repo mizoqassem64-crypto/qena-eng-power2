@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة درجات هندسة قنا2</title>
-    <!-- Google Fonts for Premium Typography -->
+    
+    <title>Electrical Power Engineering (2)</title>
+    <meta name="description" content="Electrical Power Engineering Department - Second Year Portal.">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://qena-eng-power2.vercel.app/">
+    <meta property="og:title" content="Electrical Power Engineering (2)">
+    <meta property="og:description" content="Electrical Power Engineering Department - Second Year Portal.">
+    <meta property="og:image" content="https://qena-eng-power2.vercel.app/eng-1.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Electrical Power Engineering (2)">
+    <meta name="twitter:description" content="Electrical Power Engineering Department - Second Year Portal.">
+    <meta name="twitter:image" content="https://qena-eng-power2.vercel.app/eng-1.jpg">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -384,7 +396,6 @@
 </head>
 <body>
 
-    <!-- Premium Header Area -->
     <header class="premium-header">
         <div class="header-logo header-logo-right">
             <img src="eng-1.jpg" alt="شعار الكلية" onerror="this.src='https://via.placeholder.com/90?text=Engineering+Logo'">
@@ -402,7 +413,6 @@
         </div>
     </header>
 
-    <!-- 1. LOGIN VIEW -->
     <section id="view-login" class="view-section active">
         <div class="auth-container">
             <div class="auth-title">تسجيل الدخول الرقمي</div>
@@ -423,7 +433,6 @@
         </div>
     </section>
 
-    <!-- 2. REGISTER VIEW (With updated safe template code example) -->
     <section id="view-register" class="view-section">
         <div class="auth-container" style="max-width: 600px;">
             <div class="auth-title">إنشاء حساب طالب جديد</div>
@@ -438,7 +447,6 @@
                 </div>
                 <div class="form-group">
                     <label><i class="fa-solid fa-graduation-cap"></i> الكود الجامعي</label>
-                    <!-- Fixed safe code example as requested -->
                     <input type="text" id="reg-code" class="form-control" placeholder="مثال: 202314999" required>
                 </div>
                 <div class="form-group">
@@ -453,7 +461,6 @@
         </div>
     </section>
 
-    <!-- 3. STUDENT PORTAL DASHBOARD -->
     <section id="view-student-dash" class="view-section">
         <div class="section-title"><i class="fa-solid fa-user-circle"></i> الملف الشخصي للطالب</div>
         <div class="student-profile-card">
@@ -479,7 +486,6 @@
         <div class="courses-grid" id="courses-container"></div>
     </section>
 
-    <!-- 4. COURSE DETAILED VIEW -->
     <section id="view-course-detail" class="view-section">
         <button class="back-btn" onclick="switchView('view-student-dash')" style="background:none; border:none; color:var(--primary-color); font-weight:700; cursor:pointer; margin-bottom:20px;"><i class="fa-solid fa-arrow-right"></i> العودة للوحة الرئيسية</button>
         <div class="course-detail-header-panel" style="background:white; padding:25px; border-radius:8px; box-shadow:var(--shadow); margin-bottom:25px;">
@@ -506,7 +512,6 @@
         </div>
     </section>
 
-    <!-- 5. ADMIN DASHBOARD -->
     <section id="view-admin-dash" class="view-section">
         <div class="admin-nav-bar">
             <div>
@@ -518,7 +523,6 @@
             </div>
         </div>
 
-        <!-- Admin Tab 1: Students & Grades -->
         <div id="admin-tab-students" class="admin-content-section active">
             <div class="stats-grid">
                 <div class="stat-card">
@@ -545,21 +549,17 @@
             </div>
         </div>
 
-        <!-- Admin Tab 2: FULLY INTERACTIVE COURSES & DOCTORS MANAGEMENT (Fixed & Upgraded) -->
         <div id="admin-tab-courses" class="admin-content-section">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                 <div class="section-title" style="margin-bottom:0;"><i class="fa-solid fa-book"></i> التحكم الشامل بالمقررات وأعضاء هيئة التدريس</div>
                 <button class="premium-btn" style="width:auto; padding:10px 20px;" onclick="openAddNewCourseModal()"><i class="fa-solid fa-plus"></i> إضافة مادة جديدة</button>
             </div>
             
-            <!-- Cards container for extreme high fidelity interactivity -->
             <div class="admin-course-panel-grid" id="admin-courses-cards-container">
-                <!-- Dynamically loaded with forms and real-time triggers -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- MODAL: EDIT GRADES (Fixed Dropdown Initialization Safeguards) -->
     <div id="modal-edit-grades" class="modal-overlay">
         <div class="modal-box">
             <div class="modal-header">
@@ -571,8 +571,7 @@
                 <div class="form-group">
                     <label>اختر المادة الأكاديمية المقررة</label>
                     <select id="edit-grade-course-id" class="form-control" onchange="loadStudentCourseGradesIntoModal()" required>
-                        <!-- Dynamic Options loaded via state array directly -->
-                    </select>
+                        </select>
                 </div>
                 <div class="grid-2-col">
                     <div class="form-group">
@@ -597,7 +596,6 @@
         </div>
     </div>
 
-    <!-- MODAL: ADD NEW COURSE -->
     <div id="modal-add-course" class="modal-overlay">
         <div class="modal-box" style="max-width: 450px;">
             <div class="modal-header">
@@ -622,7 +620,6 @@
         </div>
     </div>
 
-    <!-- MODAL: CHANGE PASSWORD -->
     <div id="modal-change-password" class="modal-overlay">
         <div class="modal-box" style="max-width:450px;">
             <div class="modal-header">
@@ -645,7 +642,6 @@
     </footer>
 
     <script>
-        // Default Course Layout Blueprint Templates
         const DEFAULT_COURSES = [
             { id: "circuits_2", name: "Electrical Circuits Analysis 2", prof: "د. محمد أحمد علي" },
             { id: "control_sys", name: "Control System", prof: "د. محمود عبد الرحمن" },
@@ -659,12 +655,10 @@
 
         let state = { currentUser: null, students: [], courses: [] };
 
-        // Database Initialization Engine (With forced non-empty safeguard to fix blank UI/dropdown errors)
         function initSystemDatabase() {
             const savedStudents = localStorage.getItem('h_qena_students');
             const savedCourses = localStorage.getItem('h_qena_courses');
 
-            // Bug-Fix: Verify saved courses is not empty array before assigning to guarantee it never stays blank
             if (savedCourses && JSON.parse(savedCourses).length > 0) {
                 state.courses = JSON.parse(savedCourses);
             } else {
@@ -682,8 +676,6 @@
                 localStorage.setItem('h_qena_students', JSON.stringify(state.students));
             }
             updateAdminStats();
-            
-            // Proactive dropdown and course dashboard syncing to resolve user issues
             populateCoursesDropdown();
             renderAdminCoursesTabCards();
         }
@@ -754,6 +746,7 @@
             switchView('view-login');
         }
 
+        // Student UI
         function setupStudentUI() {
             const student = state.currentUser.data;
             document.getElementById('stu-profile-name').innerText = student.name;
@@ -799,6 +792,7 @@
             switchView('view-course-detail');
         }
 
+        // Admin Workspace Control
         function setupAdminUI() {
             renderAdminStudentsTable();
             populateCoursesDropdown();
@@ -825,7 +819,6 @@
             });
         }
 
-        // Bug-Fix & Upgraded Feature 3: Fully Interactive Course/Doctor Management layout via real-time card form sheets
         function renderAdminCoursesTabCards() {
             const container = document.getElementById('admin-courses-cards-container');
             container.innerHTML = '';
@@ -863,8 +856,6 @@
             state.courses[index].name = updatedName;
             state.courses[index].prof = updatedProf;
             saveCoursesToDB();
-            
-            // Re-sync all related drop-down matrices across panels instantly
             populateCoursesDropdown();
             alert('تم حفظ وتعديل بيانات المقرر والدكتور في قاعدة البيانات الشاملة بنجاح!');
         }
@@ -882,7 +873,6 @@
             state.courses.push({ id, name, prof });
             saveCoursesToDB();
 
-            // Setup default grades map for existing students for structural safety
             state.students.forEach(s => {
                 if (!s.grades[id]) s.grades[id] = { mid: 0, attendance: 0, assignment: 0, total: 0 };
             });
@@ -905,7 +895,6 @@
             }
         }
 
-        // Dropdown Synchronization Safeguard Core
         function populateCoursesDropdown() {
             const dropdown = document.getElementById('edit-grade-course-id');
             if (!dropdown) return;
@@ -931,8 +920,6 @@
 
         function openEditGradesModal(studentCode) {
             document.getElementById('edit-grade-student-code').value = studentCode;
-            
-            // Explicitly force drop-down layout options population again before viewing
             populateCoursesDropdown();
             loadStudentCourseGradesIntoModal();
             openModal('modal-edit-grades');

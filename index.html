@@ -102,7 +102,7 @@
         .header-center-text {
             flex-grow: 1;
             text-align: center;
-            min-width: 0; /* Anti-overflow guard */
+            min-width: 0;
         }
 
         .header-center-text h1 {
@@ -218,7 +218,7 @@
         .auth-toggle-link { text-align: center; margin-top: 20px; font-size: 14px; }
         .auth-toggle-link a { color: var(--accent-color); text-decoration: none; font-weight: 700; cursor: pointer; }
 
-        /* Student Profile Card */
+        /* Student Profile Card (Optimized 3-Column Layout Grid) */
         .student-profile-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -227,7 +227,7 @@
             margin-bottom: 35px;
             border-right: 6px solid var(--accent-color);
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
         }
 
@@ -451,7 +451,7 @@
             </div>
         </div>
         
-        <!-- Left: University Logo (Fully Protected against collapse) -->
+        <!-- Left: University Logo -->
         <div class="header-logo">
             <img src="IMG_20260602_173903.jpg" alt="شعار الجامعة" onerror="this.src='https://via.placeholder.com/80?text=Uni'">
         </div>
@@ -478,7 +478,7 @@
         </div>
     </section>
 
-    <!-- 2. REGISTER VIEW -->
+    <!-- 2. REGISTER VIEW (No National ID) -->
     <section id="view-register" class="view-section">
         <div class="auth-container" style="max-width: 600px;">
             <div class="auth-title">إنشاء حساب طالب جديد</div>
@@ -486,10 +486,6 @@
                 <div class="form-group">
                     <label><i class="fa-solid fa-user"></i> الاسم بالكامل (باللغة العربية)</label>
                     <input type="text" id="reg-name" class="form-control" placeholder="أدخل الاسم رباعي كما في الأوراق الرسمية" required>
-                </div>
-                <div class="form-group">
-                    <label><i class="fa-solid fa-id-card"></i> الرقم القومي</label>
-                    <input type="text" id="reg-national" class="form-control" pattern="\d{14}" title="يجب أن يتكون الرقم القومي من 14 رقم" placeholder="أدخل الرقم القومي المكون من 14 رقم" required>
                 </div>
                 <div class="form-group">
                     <label><i class="fa-solid fa-graduation-cap"></i> الكود الجامعي</label>
@@ -507,7 +503,7 @@
         </div>
     </section>
 
-    <!-- 3. STUDENT PORTAL DASHBOARD -->
+    <!-- 3. STUDENT PORTAL DASHBOARD (No National ID) -->
     <section id="view-student-dash" class="view-section">
         <div class="section-title"><i class="fa-solid fa-user-circle"></i> الملف الشخصي للطالب</div>
         <div class="student-profile-card">
@@ -522,10 +518,6 @@
             <div class="profile-item">
                 <span class="profile-label">الكود الجامعي</span>
                 <span class="profile-value" id="stu-profile-code">-</span>
-            </div>
-            <div class="profile-item">
-                <span class="profile-label">الرقم القومي</span>
-                <span class="profile-value" id="stu-profile-national">-</span>
             </div>
         </div>
 
@@ -572,7 +564,7 @@
             </div>
         </div>
 
-        <!-- Admin Tab 1: Students & Grades -->
+        <!-- Admin Tab 1: Students & Grades (No National ID) -->
         <div id="admin-tab-students" class="admin-content-section active">
             <div class="stats-grid">
                 <div class="stat-card">
@@ -590,7 +582,6 @@
                         <tr>
                             <th>الاسم بالكامل</th>
                             <th>الكود الجامعي</th>
-                            <th>الرقم القومي</th>
                             <th>إجراءات التحكم السريع</th>
                         </tr>
                     </thead>
@@ -697,7 +688,7 @@
         جميع الحقوق محفوظة &copy; 2026 | كلية الهندسة بقنا - جامعة قنا - قسم هندسة القوى الكهربية
     </footer>
 
-    <!-- SYSTEM DATABASE CORE ENGINE SCRIPT -->
+    <!-- SYSTEM DATABASE CORE ENGINE SCRIPT (Cleaned and Optimized) -->
     <script>
         const DEFAULT_COURSES = [
             { id: "circuits_2", name: "Electrical Circuits Analysis 2", prof: "د. محمد أحمد علي" },
@@ -725,10 +716,18 @@
 
             if (savedStudents) {
                 state.students = JSON.parse(savedStudents);
+                
+                // Seamless migration: Remove any legacy nationalId data if it exists in older local storages
+                state.students.forEach(s => {
+                    if (s.nationalId !== undefined) {
+                        delete s.nationalId;
+                    }
+                });
+                
             } else {
                 state.students = [
-                    { name: "أحمد محمود محمد علي", nationalId: "29901012701234", code: "202314001", password: "123", grades: createDefaultGradesMap() },
-                    { name: "كريم حسين عبد الله", nationalId: "30005122709876", code: "202314002", password: "123", grades: createDefaultGradesMap() }
+                    { name: "أحمد محمود محمد علي", code: "202314001", password: "123", grades: createDefaultGradesMap() },
+                    { name: "كريم حسين عبد الله", code: "202314002", password: "123", grades: createDefaultGradesMap() }
                 ];
                 localStorage.setItem('h_qena_students', JSON.stringify(state.students));
             }
@@ -781,13 +780,12 @@
         function handleRegister(event) {
             event.preventDefault();
             const name = document.getElementById('reg-name').value.trim();
-            const nationalId = document.getElementById('reg-national').value.trim();
             const code = document.getElementById('reg-code').value.trim();
             const password = document.getElementById('reg-password').value;
 
             if (state.students.some(s => s.code === code)) { alert('الكود الجامعي هذا مسجل بالفعل!'); return; }
 
-            let newStudent = { name, nationalId, code, password, grades: createDefaultGradesMap() };
+            let newStudent = { name, code, password, grades: createDefaultGradesMap() };
             state.students.push(newStudent);
             saveStudentsToDB();
 
@@ -807,7 +805,6 @@
             const student = state.currentUser.data;
             document.getElementById('stu-profile-name').innerText = student.name;
             document.getElementById('stu-profile-code').innerText = student.code;
-            document.getElementById('stu-profile-national').innerText = student.nationalId;
             renderStudentCoursesGrid(student);
         }
 
@@ -864,7 +861,6 @@
                 tr.innerHTML = `
                     <td style="font-weight:700;">${student.name}</td>
                     <td><code>${student.code}</code></td>
-                    <td>${student.nationalId}</td>
                     <td>
                         <button class="action-btn-sm btn-edit" onclick="openEditGradesModal('${student.code}')"><i class="fa-solid fa-marker"></i> رصد الدرجات</button>
                         <button class="action-btn-sm btn-pass" onclick="openChangePasswordModal('${student.code}')"><i class="fa-solid fa-key"></i> باسوورد</button>

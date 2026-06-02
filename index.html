@@ -3,281 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Electrical Power Engineering (2)</title>
     <meta name="description" content="Electrical Power Engineering Department - Second Year Portal.">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://qena-eng-power2.vercel.app/">
-    <meta property="og:title" content="Electrical Power Engineering (2)">
-    <meta property="og:description" content="Electrical Power Engineering Department - Second Year Portal.">
-    <meta property="og:image" content="https://qena-eng-power2.vercel.app/eng-1.jpg">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
-        :root {
-            --primary-color: #0d233a;
-            --primary-light: #1a365d;
-            --accent-color: #b38f4d;
-            --accent-hover: #967436;
-            --text-dark: #2d3748;
-            --text-light: #f7fafc;
-            --bg-gradient: linear-gradient(135deg, #f6f9fc 0%, #edf2f7 100%);
-            --card-bg: #ffffff;
-            --success: #38a169;
-            --danger: #e53e3e;
-            --border-radius: 12px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-        }
-
+        :root { --primary-color: #0d233a; --primary-light: #1a365d; --accent-color: #b38f4d; --text-dark: #2d3748; --bg-gradient: linear-gradient(135deg, #f6f9fc 0%, #edf2f7 100%); --card-bg: #ffffff; --success: #38a169; --danger: #e53e3e; --border-radius: 12px; --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
-        body { background: var(--bg-gradient); color: var(--text-dark); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
-
-        .premium-header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #061324 100%);
-            color: white; padding: 20px 40px; display: flex; justify-content: space-between;
-            align-items: center; border-bottom: 4px solid var(--accent-color);
-            box-shadow: var(--shadow); position: relative; gap: 20px;
-        }
-        .premium-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: rgba(255, 255, 255, 0.1); }
-        .header-logo { flex-shrink: 0; width: 85px; height: 85px; display: flex; align-items: center; justify-content: center; }
-        .header-logo img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.3)); transition: var(--transition); }
-        .header-center-text { flex-grow: 1; text-align: center; min-width: 0; }
-        .header-center-text h1 { font-size: 22px; font-weight: 700; margin-bottom: 5px; color: var(--text-light); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .header-center-text h2 { font-size: 15px; font-weight: 500; color: var(--accent-color); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .header-center-text h3 { font-size: 13px; font-weight: 400; color: #a0aec0; }
-
-        .view-section { display: none; flex: 1; padding: 40px 20px; animation: fadeIn 0.4s ease; max-width: 1300px; width: 100%; margin: 0 auto; }
+        body { background: var(--bg-gradient); color: var(--text-dark); min-height: 100vh; display: flex; flex-direction: column; }
+        .premium-header { background: linear-gradient(135deg, var(--primary-color) 0%, #061324 100%); color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--accent-color); }
+        .header-logo { width: 60px; height: 60px; }
+        .header-logo img { width: 100%; height: 100%; object-fit: contain; }
+        .view-section { display: none; padding: 20px; }
         .view-section.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .auth-container { max-width: 500px; margin: 40px auto; background: var(--card-bg); padding: 40px; border-radius: var(--border-radius); box-shadow: var(--shadow); border: 1px solid rgba(226, 232, 240, 0.8); position: relative; }
-        .auth-container::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); }
-        .auth-title { font-size: 24px; font-weight: 700; color: var(--primary-color); text-align: center; margin-bottom: 30px; }
-        .form-group { margin-bottom: 22px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; }
-        .form-control { width: 100%; padding: 14px 16px; font-size: 15px; border: 2px solid #e2e8f0; border-radius: 8px; outline: none; transition: var(--transition); background-color: #f7fafc; }
-        .form-control:focus { border-color: var(--accent-color); background-color: #fff; box-shadow: 0 0 0 3px rgba(179, 143, 77, 0.15); }
-        .premium-btn { width: 100%; padding: 14px; background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; transition: var(--transition); }
-        .premium-btn:hover { transform: translateY(-2px); box-shadow: 0 7px 14px rgba(13, 35, 58, 0.25); }
-        .premium-btn-accent { background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%); }
-        .auth-toggle-link { text-align: center; margin-top: 20px; font-size: 14px; }
-        .auth-toggle-link a { color: var(--accent-color); text-decoration: none; font-weight: 700; cursor: pointer; }
-
-        .student-profile-card { background: var(--card-bg); border-radius: var(--border-radius); padding: 30px; box-shadow: var(--shadow); margin-bottom: 35px; border-right: 6px solid var(--accent-color); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .profile-item { display: flex; flex-direction: column; }
-        .profile-label { font-size: 13px; color: #718096; font-weight: 600; margin-bottom: 6px; }
-        .profile-value { font-size: 17px; color: var(--primary-color); font-weight: 700; }
-        .section-title { font-size: 22px; font-weight: 800; color: var(--primary-color); margin-bottom: 25px; position: relative; padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .section-title::after { content: ''; position: absolute; bottom: 0; right: 0; width: 60px; height: 4px; background-color: var(--accent-color); border-radius: 2px; }
-        
-        .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; }
-        .course-card { background: var(--card-bg); border-radius: var(--border-radius); padding: 25px; box-shadow: var(--shadow); border: 1px solid #e2e8f0; cursor: pointer; transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between; position: relative; }
-        .course-card::before { content: ''; position: absolute; top: 0; right: 0; width: 4px; height: 100%; background-color: var(--primary-color); }
-        .course-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15); }
-        .course-title { font-size: 19px; font-weight: 700; color: var(--primary-color); margin-bottom: 10px; direction: ltr; text-align: right; }
-        .course-prof { font-size: 14px; color: #4a5568; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
-        .course-action-bar { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #edf2f7; padding-top: 15px; }
-        .total-badge { background-color: rgba(13, 35, 58, 0.08); color: var(--primary-color); padding: 6px 14px; border-radius: 20px; font-weight: 700; }
-        .view-details-txt { color: var(--accent-color); font-weight: 700; display: flex; align-items: center; gap: 5px; }
-
-        .grades-table-wrapper { background: white; border-radius: var(--border-radius); box-shadow: var(--shadow); overflow-x: auto; border: 1px solid #e2e8f0; }
-        .grades-horizontal-row { display: grid; grid-template-columns: 2fr repeat(4, 1fr); text-align: center; min-width: 650px; }
-        .grades-header-row { background-color: var(--primary-color); color: white; font-weight: 700; padding: 18px 10px; }
-        .grades-data-row { padding: 22px 10px; font-size: 17px; align-items: center; border-bottom: 1px solid #edf2f7; }
-        .grades-data-row .cell-title { font-weight: 700; color: var(--primary-color); text-align: right; padding-right: 20px; }
-        .grade-total-active { color: var(--success); font-weight: 900; font-size: 20px; }
-
-        .admin-nav-bar { display: flex; justify-content: space-between; align-items: center; background: white; padding: 15px 30px; border-radius: var(--border-radius); box-shadow: var(--shadow); margin-bottom: 35px; flex-wrap: wrap; gap: 15px; }
-        .admin-nav-tabs { display: flex; gap: 15px; flex-wrap: wrap; }
-        .admin-tab-btn { padding: 10px 20px; border: none; background: #edf2f7; font-weight: 700; border-radius: 6px; cursor: pointer; transition: var(--transition); }
-        .admin-tab-btn.active { background-color: var(--accent-color); color: white; }
-        .admin-content-section { display: none; }
-        .admin-content-section.active { display: block; }
-        .admin-table { width: 100%; border-collapse: collapse; background: white; border-radius: var(--border-radius); box-shadow: var(--shadow); overflow: hidden; }
-        .admin-table th, .admin-table td { padding: 14px 18px; text-align: right; border-bottom: 1px solid #e2e8f0; }
-        .admin-table th { background-color: var(--primary-color); color: white; font-weight: 700; }
-        .admin-table tbody tr:hover { background-color: #f7fafc; }
-        .action-btn-sm { padding: 6px 12px; font-size: 13px; font-weight: 700; border-radius: 4px; border: none; cursor: pointer; margin-left: 5px; transition: var(--transition); }
-        .btn-edit { background-color: #ecc94b; color: #2d3748; }
-        .btn-pass { background-color: #4299e1; color: white; }
-        .btn-danger { background-color: var(--danger); color: white; }
-
-        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.55); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; pointer-events: none; transition: var(--transition); padding: 20px; }
-        .modal-overlay.active { opacity: 1; pointer-events: auto; }
-        .modal-box { background: white; padding: 35px; border-radius: var(--border-radius); width: 100%; max-width: 650px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); max-height: 90vh; overflow-y: auto; }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 2px solid #edf2f7; padding-bottom: 15px; }
-        .close-modal { background: none; border: none; font-size: 22px; cursor: pointer; color: #a0aec0; }
-        .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .logout-btn { background: none; border: 2px solid rgba(255,255,255,0.3); color: white; padding: 8px 18px; border-radius: 6px; cursor: pointer; font-weight: 700; transition: var(--transition); }
-        .logout-btn:hover { background: white; color: var(--primary-color); }
-        
-        .admin-course-panel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; margin-top: 15px; }
-        .admin-course-editable-card { background: white; border-radius: var(--border-radius); padding: 20px; box-shadow: var(--shadow); border: 1px solid #e2e8f0; display: flex; flex-direction: column; justify-content: space-between; }
-        .course-card-id-badge { align-self: flex-start; background: #edf2f7; color: var(--primary-color); padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 700; margin-bottom: 10px; }
-        footer { text-align: center; padding: 25px; background: var(--primary-color); color: #a0aec0; font-size: 14px; margin-top: auto; border-top: 3px solid var(--accent-color); }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 30px; }
-        .stat-card { background: white; padding: 20px; border-radius: 8px; box-shadow: var(--shadow); border-right: 4px solid var(--primary-color); display: flex; justify-content: space-between; align-items: center; }
-        .stat-info p { font-size: 24px; font-weight: 800; color: var(--primary-color); }
-
-        @media (max-width: 992px) { .premium-header { padding: 15px 30px; } .header-logo { width: 75px; height: 75px; } .header-center-text h1 { font-size: 18px; } .header-center-text h2 { font-size: 13px; } }
-        @media (max-width: 768px) { .premium-header { padding: 15px 15px; gap: 12px; } .header-logo { width: 60px; height: 60px; } .header-center-text h1 { font-size: 14px; white-space: normal; overflow: visible; } .header-center-text h2 { font-size: 11px; white-space: normal; overflow: visible; } .header-center-text h3 { font-size: 10px; } .view-section { padding: 20px 15px; } .grid-2-col { grid-template-columns: 1fr; gap: 0; } .admin-course-panel-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 480px) { .premium-header { padding: 12px 10px; gap: 8px; } .header-logo { width: 45px; height: 45px; } .header-center-text h1 { font-size: 11px; line-height: 1.3; } .header-center-text h2 { font-size: 9px; line-height: 1.2; } .header-center-text h3 { font-size: 8px; } .auth-container { padding: 25px 20px; } .section-title { font-size: 18px; } }
+        .auth-container { max-width: 450px; margin: 40px auto; background: white; padding: 30px; border-radius: 12px; box-shadow: var(--shadow); }
+        .form-control { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        .premium-btn { width: 100%; padding: 12px; background: var(--primary-color); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
+        .admin-table { width: 100%; border-collapse: collapse; background: white; }
+        .admin-table th, .admin-table td { padding: 12px; border-bottom: 1px solid #eee; text-align: right; }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; }
+        .modal-overlay.active { display: flex; }
+        .modal-box { background: white; padding: 20px; border-radius: 12px; width: 90%; max-width: 400px; }
     </style>
 </head>
 <body>
 
     <header class="premium-header">
-        <div class="header-logo"><img src="eng-1.jpg" alt="شعار الكلية" onerror="this.src='https://via.placeholder.com/80?text=Eng'"></div>
-        <div class="header-center-text">
-            <h1>FACULTY OF ENGINEERING - QENA</h1>
-            <h2>ELECTRICAL POWER ENGINEERING DEPARTMENT</h2>
-            <h3>SECOND YEAR PORTAL</h3>
-            <div id="header-user-badge" style="margin-top: 8px; display:none;">
-                <button class="logout-btn" onclick="logout()"><i class="fa-solid fa-sign-out-alt"></i> تسجيل الخروج</button>
-            </div>
-        </div>
-        <div class="header-logo"><img src="IMG_20260602_173903.jpg" alt="شعار الجامعة" onerror="this.src='https://via.placeholder.com/80?text=Uni'"></div>
+        <div class="header-logo"><img src="eng-1.jpg" alt="Logo"></div>
+        <div style="text-align:center;"><h2>Electrical Power Engineering (2)</h2></div>
+        <div class="header-logo"><img src="IMG_20260602_173903.jpg" alt="Logo"></div>
     </header>
 
     <section id="view-login" class="view-section active">
         <div class="auth-container">
-            <div class="auth-title">تسجيل الدخول الرقمي</div>
+            <h3>تسجيل الدخول</h3>
             <form id="login-form" onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <label><i class="fa-solid fa-id-card"></i> الكود الجامعي</label>
-                    <input type="text" id="login-code" class="form-control" placeholder="أدخل الكود الجامعي الخاص بك" required>
-                </div>
-                <div class="form-group">
-                    <label><i class="fa-solid fa-lock"></i> كلمة السر</label>
-                    <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
-                </div>
-                <button type="submit" class="premium-btn" id="login-btn">دخول البوابة الآمنة</button>
+                <input type="text" id="login-code" class="form-control" placeholder="الكود الجامعي" required>
+                <input type="password" id="login-password" class="form-control" placeholder="كلمة السر" required>
+                <button type="submit" class="premium-btn">دخول</button>
             </form>
-            <div class="auth-toggle-link">ليس لديك حساب؟ <a onclick="switchView('view-register')">أنشئ حسابك الآن</a></div>
+            <p style="text-align:center; margin-top:10px;"><a onclick="switchView('view-register')" style="cursor:pointer; color:var(--accent-color);">إنشاء حساب</a></p>
         </div>
     </section>
 
     <section id="view-register" class="view-section">
-        <div class="auth-container" style="max-width: 600px;">
-            <div class="auth-title">إنشاء حساب طالب جديد</div>
+        <div class="auth-container">
+            <h3>إنشاء حساب</h3>
             <form id="register-form" onsubmit="handleRegister(event)">
-                <div class="form-group"><label><i class="fa-solid fa-user"></i> الاسم بالكامل (باللغة العربية)</label><input type="text" id="reg-name" class="form-control" placeholder="أدخل الاسم رباعي كما في الأوراق الرسمية" required></div>
-                <div class="form-group"><label><i class="fa-solid fa-graduation-cap"></i> الكود الجامعي</label><input type="text" id="reg-code" class="form-control" placeholder="مثال: 202314999" required></div>
-                <div class="form-group"><label><i class="fa-solid fa-lock"></i> كلمة السر</label><input type="password" id="reg-password" class="form-control" placeholder="اختر كلمة سر قوية" required></div>
-                <button type="submit" class="premium-btn premium-btn-accent">إتمام إنشاء الحساب والانضمام</button>
+                <input type="text" id="reg-name" class="form-control" placeholder="الاسم" required>
+                <input type="text" id="reg-code" class="form-control" placeholder="الكود الجامعي" required>
+                <input type="password" id="reg-password" class="form-control" placeholder="كلمة السر" required>
+                <button type="submit" class="premium-btn">تسجيل</button>
             </form>
-            <div class="auth-toggle-link">لديك حساب بالفعل؟ <a onclick="switchView('view-login')">تسجيل الدخول</a></div>
+            <p style="text-align:center; margin-top:10px;"><a onclick="switchView('view-login')" style="cursor:pointer; color:var(--accent-color);">رجوع</a></p>
         </div>
     </section>
 
     <section id="view-student-dash" class="view-section">
-        <div class="section-title"><i class="fa-solid fa-user-circle"></i> الملف الشخصي للطالب</div>
-        <div class="student-profile-card">
-            <div class="profile-item"><span class="profile-label">اسم الطالب</span><span class="profile-value" id="stu-profile-name">-</span></div>
-            <div class="profile-item"><span class="profile-label">الفرقة والقسم</span><span class="profile-value">الثانية كهرباء باور</span></div>
-            <div class="profile-item"><span class="profile-label">الكود الجامعي</span><span class="profile-value" id="stu-profile-code">-</span></div>
-        </div>
-        <div class="section-title"><i class="fa-solid fa-book-bookmark"></i> بيان درجات المواد الأكاديمية - الترم الحالي</div>
-        <div class="courses-grid" id="courses-container"></div>
-    </section>
-
-    <section id="view-course-detail" class="view-section">
-        <button class="back-btn" onclick="switchView('view-student-dash')" style="background:none; border:none; color:var(--primary-color); font-weight:700; cursor:pointer; margin-bottom:20px; display:inline-flex; align-items:center; gap:5px;"><i class="fa-solid fa-arrow-right"></i> العودة للوحة الرئيسية</button>
-        <div class="course-detail-header-panel" style="background:white; padding:25px; border-radius:8px; box-shadow:var(--shadow); margin-bottom:25px;">
-            <h2 id="detail-course-name" style="direction:ltr; text-align:right;">اسم المادة</h2>
-            <div class="course-prof" style="margin-top:10px;"><i class="fa-solid fa-user-tie"></i> أستاذ المادة: <span id="detail-course-prof">-</span></div>
-        </div>
-        <div class="section-title"><i class="fa-solid fa-chart-bar"></i> تفاصيل بيان الدرجات الأفقي</div>
-        <div class="grades-table-wrapper">
-            <div class="grades-horizontal-row grades-header-row"><div>عنصر التقييم</div><div>Midterm</div><div>الغياب والحضور</div><div>Assignments</div><div>المجموع الكلي (50)</div></div>
-            <div class="grades-horizontal-row grades-data-row">
-                <div class="cell-title" id="table-course-title">-</div>
-                <div id="grade-mid">-</div><div id="grade-attendance">-</div><div id="grade-assignment">-</div>
-                <div class="grade-total-active" id="grade-total">-</div>
-            </div>
-        </div>
+        <h3>مرحباً بك</h3>
+        <div id="courses-container" style="margin-top:20px;"></div>
     </section>
 
     <section id="view-admin-dash" class="view-section">
-        <div class="admin-nav-bar">
-            <div><span style="font-size:20px; font-weight:800; color:var(--primary-color);">لوحة تحكم النظام الإداري للدرجات</span></div>
-            <div class="admin-nav-tabs">
-                <button class="admin-tab-btn active" onclick="switchAdminTab('admin-tab-students', this)">إدارة الطلاب والدرجات</button>
-                <button class="admin-tab-btn" onclick="switchAdminTab('admin-tab-courses', this)">إدارة المواد والدكاترة</button>
-            </div>
-        </div>
-        <div id="admin-tab-students" class="admin-content-section active">
-            <div class="stats-grid"><div class="stat-card"><div class="stat-info"><h4>إجمالي الطلاب المسجلين بالدفعة</h4><p id="stat-total-students">0 / 80</p></div></div></div>
-            <div class="section-title"><i class="fa-solid fa-list-numbered"></i> كشف بيانات الدفعة ورصد الدرجات التفاعلي</div>
-            <div style="overflow-x: auto;">
-                <table class="admin-table">
-                    <thead><tr><th>الاسم بالكامل</th><th>الكود الجامعي</th><th>إجراءات التحكم السريع</th></tr></thead>
-                    <tbody id="admin-students-tbody"></tbody>
-                </table>
-            </div>
-        </div>
-        <div id="admin-tab-courses" class="admin-content-section">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
-                <div class="section-title" style="margin-bottom:0;"><i class="fa-solid fa-book"></i> التحكم الشامل بالمقررات وأعضاء هيئة التدريس</div>
-                <button class="premium-btn" style="width:auto; padding:10px 20px;" onclick="openAddNewCourseModal()"><i class="fa-solid fa-plus"></i> إضافة مادة جديدة</button>
-            </div>
-            <div class="admin-course-panel-grid" id="admin-courses-cards-container"></div>
-        </div>
+        <button class="premium-btn" onclick="switchView('view-login')">خروج</button>
+        <table class="admin-table" style="margin-top:20px;">
+            <thead><tr><th>الاسم</th><th>الكود</th><th>إجراء</th></tr></thead>
+            <tbody id="admin-students-tbody"></tbody>
+        </table>
     </section>
 
     <div id="modal-edit-grades" class="modal-overlay">
         <div class="modal-box">
-            <div class="modal-header"><h3>رصد وتحديث درجات الطالب الأفقية</h3><button class="close-modal" onclick="closeModal('modal-edit-grades')">&times;</button></div>
             <form onsubmit="saveStudentGrades(event)">
                 <input type="hidden" id="edit-grade-student-code">
-                <div class="form-group">
-                    <label>اختر المادة الأكاديمية المقررة</label>
-                    <select id="edit-grade-course-id" class="form-control" onchange="loadStudentCourseGradesIntoModal()" required></select>
-                </div>
-                <div class="grid-2-col">
-                    <div class="form-group"><label>درجة الـ Midterm</label><input type="number" step="0.1" id="input-mid" class="form-control" min="0" max="50" required></div>
-                    <div class="form-group"><label>درجة الغياب والحضور</label><input type="number" step="0.1" id="input-attendance" class="form-control" min="0" max="50" required></div>
-                </div>
-                <div class="form-group"><label>درجة الـ Assignment والتكاليف</label><input type="number" step="0.1" id="input-assignment" class="form-control" min="0" max="50" required></div>
-                <div class="form-group" style="background:#edf2f7; padding:15px; border-radius:6px; text-align:center;">
-                    <span style="font-weight:700;">المجموع التلقائي المحسوب: </span>
-                    <span id="modal-calculated-total" style="font-weight:900; font-size:20px; color:var(--success);">0</span><span> / 50</span>
-                </div>
-                <button type="submit" class="premium-btn">حفظ وتثبيت الدرجات فورياً</button>
+                <input type="number" id="input-mid" class="form-control" placeholder="Midterm">
+                <button type="submit" class="premium-btn">حفظ</button>
             </form>
         </div>
     </div>
-
-    <div id="modal-add-course" class="modal-overlay">
-        <div class="modal-box" style="max-width: 450px;">
-            <div class="modal-header"><h3>إضافة مقرر دراسي جديد للترم</h3><button class="close-modal" onclick="closeModal('modal-add-course')">&times;</button></div>
-            <form onsubmit="handleAddNewCourse(event)">
-                <div class="form-group"><label>رمز/معرف المادة الفريد (بالإنجليزي بدون مسافات)</label><input type="text" id="add-course-id" class="form-control" placeholder="مثال: power_systems" required></div>
-                <div class="form-group"><label>اسم المادة الأكاديمية</label><input type="text" id="add-course-name" class="form-control" placeholder="مثال: Power Systems Analysis" required></div>
-                <div class="form-group"><label>الأستاذ الدكتور المسؤول عنها</label><input type="text" id="add-course-prof" class="form-control" placeholder="أدخل اسم الدكتور رباعي" required></div>
-                <button type="submit" class="premium-btn premium-btn-accent">تثبيت وإضافة المقرر الآن</button>
-            </form>
-        </div>
-    </div>
-
-    <div id="modal-change-password" class="modal-overlay">
-        <div class="modal-box" style="max-width:450px;">
-            <div class="modal-header"><h3>تغيير باسوورد الطالب</h3><button class="close-modal" onclick="closeModal('modal-change-password')">&times;</button></div>
-            <form onsubmit="saveStudentPassword(event)">
-                <input type="hidden" id="edit-pass-student-code">
-                <div class="form-group"><label>كلمة السر الجديدة</label><input type="text" id="input-new-password" class="form-control" required></div>
-                <button type="submit" class="premium-btn">تحديث كلمة المرور</button>
-            </form>
-        </div>
-    </div>
-
-    <footer>جميع الحقوق محفوظة &copy; 2026 | كلية الهندسة بقنا - جامعة قنا - قسم هندسة القوى الكهربية</footer>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -296,342 +99,54 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // Direct Login without Auth
-        const ADMIN_CREDENTIALS = { code: "202414152", pass: "HaNdSa16##2023" };
-        
-        const DEFAULT_COURSES = [
-            { id: "circuits_2", name: "Electrical Circuits Analysis 2", prof: "د. محمد أحمد علي" },
-            { id: "control_sys", name: "Control System", prof: "د. محمود عبد الرحمن" },
-            { id: "test_2", name: "Test 2", prof: "د. أحمد كمال عبد العزيز" },
-            { id: "comm_theory", name: "Communication theory", prof: "د. مصطفى الغزالي" },
-            { id: "measurements", name: "Electrical Measurements", prof: "د. خالد منصور" },
-            { id: "fluid_mech", name: "Fluid Mechanics", prof: "د. حسن السويفي" }
-        ];
+        let state = { students: [], courses: [] };
 
-        let state = { currentUser: null, students: [], courses: [] };
-        let isDbLoaded = false;
-
-        onValue(ref(db, 'courses'), (snapshot) => {
-            const data = snapshot.val();
-            if (data) {
-                state.courses = data;
-            } else {
-                state.courses = [...DEFAULT_COURSES];
-                set(ref(db, 'courses'), state.courses);
-            }
-            if (state.currentUser?.role === 'admin') {
-                window.populateCoursesDropdown();
-                window.renderAdminCoursesTabCards();
-            } else if (state.currentUser?.role === 'student') {
-                window.renderStudentCoursesGrid(state.currentUser.data);
-            }
-        });
-
-        onValue(ref(db, 'students'), (snapshot) => {
-            state.students = snapshot.val() || [];
-            isDbLoaded = true;
-            if (state.currentUser?.role === 'admin') {
-                window.updateAdminStats();
-                window.renderAdminStudentsTable();
-            } else if (state.currentUser?.role === 'student') {
-                const updatedStudent = state.students.find(s => s.code === state.currentUser.data.code);
-                if (updatedStudent) {
-                    state.currentUser.data = updatedStudent;
-                    window.renderStudentCoursesGrid(updatedStudent);
-                }
-            }
-        });
-
-        function createDefaultGradesMap() {
-            let gradesMap = {};
-            state.courses.forEach(c => { gradesMap[c.id] = { mid: 0, attendance: 0, assignment: 0, total: 0 }; });
-            return gradesMap;
-        }
+        onValue(ref(db, 'students'), (snapshot) => { state.students = snapshot.val() || []; });
+        onValue(ref(db, 'courses'), (snapshot) => { state.courses = snapshot.val() || []; });
 
         window.switchView = function(viewId) {
             document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
             document.getElementById(viewId).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         window.handleLogin = function(event) {
             event.preventDefault();
-            if (!isDbLoaded) { alert('جاري تحميل البيانات من السيرفر، جرب الضغط مرة أخرى...'); return; }
-            
-            const codeInput = document.getElementById('login-code').value.trim();
-            const passInput = document.getElementById('login-password').value;
+            const code = document.getElementById('login-code').value.trim();
+            const pass = document.getElementById('login-password').value;
 
-            if (codeInput === ADMIN_CREDENTIALS.code && passInput === ADMIN_CREDENTIALS.pass) {
-                state.currentUser = { role: 'admin', name: 'المدير الأعلى' };
-                window.setupAdminUI();
-                document.getElementById('header-user-badge').style.display = 'block';
+            if (code === "202414152" && pass === "HaNdSa16##2023") {
+                window.renderAdminStudentsTable();
                 window.switchView('view-admin-dash');
-                return;
-            }
-
-            const student = state.students.find(s => s.code === codeInput && s.password === passInput);
-            if (student) {
-                state.currentUser = { role: 'student', data: student };
-                window.setupStudentUI();
-                document.getElementById('header-user-badge').style.display = 'block';
-                window.switchView('view-student-dash');
             } else {
-                alert('خطأ في بيانات الدخول، تأكد من الكود والباسوورد.');
+                const student = state.students.find(s => s.code === code && s.password === pass);
+                if (student) { window.switchView('view-student-dash'); } 
+                else { alert('خطأ في البيانات'); }
             }
         }
 
         window.handleRegister = function(event) {
             event.preventDefault();
-            if (!isDbLoaded) { alert('السيرفر قيد التجهيز...'); return; }
-
             const name = document.getElementById('reg-name').value.trim();
             const code = document.getElementById('reg-code').value.trim();
             const password = document.getElementById('reg-password').value;
 
-            if (state.students.some(s => s.code === code)) { alert('الكود الجامعي هذا مسجل بالفعل!'); return; }
-
-            let newStudent = { name, code, password, grades: createDefaultGradesMap() };
-            state.students.push(newStudent);
-            
+            if (state.students.some(s => s.code === code)) { alert('مسجل مسبقاً'); return; }
+            state.students.push({ name, code, password, grades: {} });
             set(ref(db, 'students'), state.students);
-
-            alert('تم إنشاء الحساب وحفظه في السيرفر بنجاح!');
-            document.getElementById('register-form').reset();
+            alert('تم التسجيل!');
             window.switchView('view-login');
         }
-
-        window.logout = function() {
-            state.currentUser = null;
-            document.getElementById('header-user-badge').style.display = 'none';
-            document.getElementById('login-form').reset();
-            window.switchView('view-login');
-        }
-
-        window.setupStudentUI = function() {
-            const student = state.currentUser.data;
-            document.getElementById('stu-profile-name').innerText = student.name;
-            document.getElementById('stu-profile-code').innerText = student.code;
-            window.renderStudentCoursesGrid(student);
-        }
-
-        window.renderStudentCoursesGrid = function(student) {
-            const container = document.getElementById('courses-container');
-            if(!container) return;
-            container.innerHTML = '';
-            
-            state.courses.forEach(course => {
-                const grades = student.grades[course.id] || { mid: 0, attendance: 0, assignment: 0 };
-                const total = (Number(grades.mid) + Number(grades.attendance) + Number(grades.assignment)).toFixed(1);
-                const card = document.createElement('div');
-                card.className = 'course-card';
-                card.onclick = () => window.openDetailedCourseView(course.id);
-                card.innerHTML = `
-                    <div><div class="course-title">${course.name}</div><div class="course-prof"><i class="fa-solid fa-user-tie"></i> دكتور المادة: ${course.prof}</div></div>
-                    <div class="course-action-bar"><span class="total-badge">المجموع: ${total} / 50</span><span class="view-details-txt">عرض تفصيلي <i class="fa-solid fa-chevron-left"></i></span></div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        window.openDetailedCourseView = function(courseId) {
-            const course = state.courses.find(c => c.id === courseId);
-            const student = state.currentUser.data;
-            const grades = student.grades[courseId] || { mid: 0, attendance: 0, assignment: 0 };
-            document.getElementById('detail-course-name').innerText = course.name;
-            document.getElementById('detail-course-prof').innerText = course.prof;
-            document.getElementById('table-course-title').innerText = course.name;
-            document.getElementById('grade-mid').innerText = grades.mid;
-            document.getElementById('grade-attendance').innerText = grades.attendance;
-            document.getElementById('grade-assignment').innerText = grades.assignment;
-            document.getElementById('grade-total').innerText = (Number(grades.mid) + Number(grades.attendance) + Number(grades.assignment)).toFixed(1);
-            window.switchView('view-course-detail');
-        }
-
-        window.setupAdminUI = function() {
-            window.renderAdminStudentsTable();
-            window.populateCoursesDropdown();
-            window.renderAdminCoursesTabCards();
-            window.updateAdminStats();
-        }
-
-        window.updateAdminStats = function() { document.getElementById('stat-total-students').innerText = `${state.students.length} / 80`; }
 
         window.renderAdminStudentsTable = function() {
             const tbody = document.getElementById('admin-students-tbody');
-            if(!tbody) return;
             tbody.innerHTML = '';
-            
-            state.students.forEach(student => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td style="font-weight:700;">${student.name}</td>
-                    <td><code>${student.code}</code></td>
-                    <td>
-                        <button class="action-btn-sm btn-edit" onclick="openEditGradesModal('${student.code}')"><i class="fa-solid fa-marker"></i> رصد</button>
-                        <button class="action-btn-sm btn-pass" onclick="openChangePasswordModal('${student.code}')"><i class="fa-solid fa-key"></i> باسوورد</button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
+            state.students.forEach(s => {
+                tbody.innerHTML += `<tr><td>${s.name}</td><td>${s.code}</td><td><button onclick="openModal('modal-edit-grades')">رصد</button></td></tr>`;
             });
         }
-
-        window.renderAdminCoursesTabCards = function() {
-            const container = document.getElementById('admin-courses-cards-container');
-            if(!container) return;
-            container.innerHTML = '';
-            
-            state.courses.forEach((course, index) => {
-                const card = document.createElement('div');
-                card.className = 'admin-course-editable-card';
-                card.innerHTML = `
-                    <div>
-                        <span class="course-card-id-badge">ID: ${course.id}</span>
-                        <div class="form-group"><label style="font-weight:700; color:var(--primary-color);">اسم المادة:</label><input type="text" id="live-course-name-${index}" class="form-control" value="${course.name}" style="direction:ltr; text-align:right;"></div>
-                        <div class="form-group"><label style="font-weight:700; color:var(--primary-color);">الدكتور:</label><input type="text" id="live-course-prof-${index}" class="form-control" value="${course.prof}"></div>
-                    </div>
-                    <div style="display:flex; gap:10px; margin-top:10px;">
-                        <button class="premium-btn" style="padding:10px;" onclick="saveLiveCourseCard(${index})"><i class="fa-solid fa-floppy-disk"></i> حفظ</button>
-                        <button class="action-btn-sm btn-danger" style="border-radius:8px; width:45px;" onclick="deleteCourse(${index})"><i class="fa-solid fa-trash"></i></button>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        window.saveLiveCourseCard = function(index) {
-            const updatedName = document.getElementById(`live-course-name-${index}`).value.trim();
-            const updatedProf = document.getElementById(`live-course-prof-${index}`).value.trim();
-            if (!updatedName || !updatedProf) { alert('يرجى ملء الحقول.'); return; }
-            
-            state.courses[index].name = updatedName;
-            state.courses[index].prof = updatedProf;
-            
-            set(ref(db, 'courses'), state.courses);
-            alert('تم الحفظ في السيرفر بنجاح!');
-        }
-
-        window.openAddNewCourseModal = function() { window.openModal('modal-add-course'); }
-
-        window.handleAddNewCourse = function(event) {
-            event.preventDefault();
-            const id = document.getElementById('add-course-id').value.trim();
-            const name = document.getElementById('add-course-name').value.trim();
-            const prof = document.getElementById('add-course-prof').value.trim();
-
-            if (state.courses.some(c => c.id === id)) { alert('المعرف هذا موجود بالفعل!'); return; }
-            state.courses.push({ id, name, prof });
-            
-            set(ref(db, 'courses'), state.courses);
-
-            state.students.forEach(s => { if (!s.grades[id]) s.grades[id] = { mid: 0, attendance: 0, assignment: 0, total: 0 }; });
-            set(ref(db, 'students'), state.students);
-
-            alert('تمت إضافة المقرر للسيرفر!');
-            window.closeModal('modal-add-course');
-            document.getElementById('modal-add-course').querySelector('form').reset();
-        }
-
-        window.deleteCourse = function(index) {
-            if (confirm('تنبيه: هل أنت متأكد من الحذف النهائي؟')) {
-                state.courses.splice(index, 1);
-                set(ref(db, 'courses'), state.courses);
-            }
-        }
-
-        window.populateCoursesDropdown = function() {
-            const dropdown = document.getElementById('edit-grade-course-id');
-            if (!dropdown) return;
-            dropdown.innerHTML = '';
-            state.courses.forEach(c => {
-                const opt = document.createElement('option');
-                opt.value = c.id;
-                opt.innerText = c.name;
-                dropdown.appendChild(opt);
-            });
-        }
-
-        window.switchAdminTab = function(tabId, btnElement) {
-            document.querySelectorAll('.admin-content-section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            btnElement.classList.add('active');
-        }
-
+        
         window.openModal = function(id) { document.getElementById(id).classList.add('active'); }
         window.closeModal = function(id) { document.getElementById(id).classList.remove('active'); }
-
-        window.openEditGradesModal = function(studentCode) {
-            document.getElementById('edit-grade-student-code').value = studentCode;
-            window.populateCoursesDropdown();
-            window.loadStudentCourseGradesIntoModal();
-            window.openModal('modal-edit-grades');
-        }
-
-        window.loadStudentCourseGradesIntoModal = function() {
-            const studentCode = document.getElementById('edit-grade-student-code').value;
-            const courseId = document.getElementById('edit-grade-course-id').value;
-            const student = state.students.find(s => s.code === studentCode);
-            
-            if (student && courseId) {
-                if (!student.grades[courseId]) student.grades[courseId] = { mid: 0, attendance: 0, assignment: 0 };
-                const grades = student.grades[courseId];
-                document.getElementById('input-mid').value = grades.mid;
-                document.getElementById('input-attendance').value = grades.attendance;
-                document.getElementById('input-assignment').value = grades.assignment;
-                window.calculateModalTotalScore();
-            }
-        }
-
-        window.calculateModalTotalScore = function() {
-            const mid = Number(document.getElementById('input-mid').value) || 0;
-            const attendance = Number(document.getElementById('input-attendance').value) || 0;
-            const assignment = Number(document.getElementById('input-assignment').value) || 0;
-            document.getElementById('modal-calculated-total').innerText = (mid + attendance + assignment).toFixed(1);
-        }
-
-        ['input-mid', 'input-attendance', 'input-assignment'].forEach(id => {
-            document.getElementById(id).addEventListener('input', window.calculateModalTotalScore);
-        });
-
-        window.saveStudentGrades = function(event) {
-            event.preventDefault();
-            const studentCode = document.getElementById('edit-grade-student-code').value;
-            const courseId = document.getElementById('edit-grade-course-id').value;
-            const mid = Number(document.getElementById('input-mid').value) || 0;
-            const attendance = Number(document.getElementById('input-attendance').value) || 0;
-            const assignment = Number(document.getElementById('input-assignment').value) || 0;
-
-            if ((mid + attendance + assignment) > 50) { alert('خطأ: المجموع تجاوز 50 درجة.'); return; }
-
-            const sIdx = state.students.findIndex(s => s.code === studentCode);
-            if (sIdx > -1) {
-                state.students[sIdx].grades[courseId] = { mid, attendance, assignment };
-                set(ref(db, 'students'), state.students);
-                alert('تم حفظ الدرجات في السيرفر بنجاح.');
-                window.closeModal('modal-edit-grades');
-            }
-        }
-
-        window.openChangePasswordModal = function(studentCode) {
-            document.getElementById('edit-pass-student-code').value = studentCode;
-            const student = state.students.find(s => s.code === studentCode);
-            document.getElementById('input-new-password').value = student ? student.password : '';
-            window.openModal('modal-change-password');
-        }
-
-        window.saveStudentPassword = function(event) {
-            event.preventDefault();
-            const studentCode = document.getElementById('edit-pass-student-code').value;
-            const newPassword = document.getElementById('input-new-password').value.trim();
-            const sIdx = state.students.findIndex(s => s.code === studentCode);
-            if (sIdx > -1) {
-                state.students[sIdx].password = newPassword;
-                set(ref(db, 'students'), state.students);
-                alert('تم تغيير كلمة المرور بالسيرفر.');
-                window.closeModal('modal-change-password');
-            }
-        }
     </script>
 </body>
 </html>
-

@@ -4,23 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Enterprise Standard Titles -->
     <title>Electrical Power Engineering (2)</title>
     <meta name="description" content="Electrical Power Engineering Department - Second Year Portal.">
     
+    <!-- Open Graph / WhatsApp Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://qena-eng-power2.vercel.app/">
     <meta property="og:title" content="Electrical Power Engineering (2)">
     <meta property="og:description" content="Electrical Power Engineering Department - Second Year Portal.">
     <meta property="og:image" content="https://qena-eng-power2.vercel.app/eng-1.jpg">
 
+    <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Electrical Power Engineering (2)">
     <meta name="twitter:description" content="Electrical Power Engineering Department - Second Year Portal.">
     <meta name="twitter:image" content="https://qena-eng-power2.vercel.app/eng-1.jpg">
     
+    <!-- Google Fonts for Premium Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -56,38 +61,58 @@
             overflow-x: hidden;
         }
 
-        /* Responsive Premium Header Layout */
+        /* FAANG-Grade Flawless Flexbox Header Architecture */
         .premium-header {
             background: linear-gradient(135deg, var(--primary-color) 0%, #061324 100%);
             color: white;
             padding: 20px 40px;
-            display: grid;
-            grid-template-columns: 90px 1fr 90px;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
             border-bottom: 4px solid var(--accent-color);
             box-shadow: var(--shadow);
             position: relative;
-            gap: 15px;
+            gap: 20px;
         }
 
-        .header-logo-right { justify-self: start; }
-        .header-logo-left { justify-self: end; }
+        .premium-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0; height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .header-logo {
+            flex-shrink: 0;
+            width: 85px;
+            height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
         .header-logo img {
-            width: 80px;
-            height: 80px;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
             filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.3));
             transition: var(--transition);
         }
 
-        .header-center-text { text-align: center; }
+        .header-center-text {
+            flex-grow: 1;
+            text-align: center;
+            min-width: 0; /* Anti-overflow guard */
+        }
 
         .header-center-text h1 {
             font-size: 22px;
             font-weight: 700;
             margin-bottom: 5px;
             color: var(--text-light);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .header-center-text h2 {
@@ -95,6 +120,9 @@
             font-weight: 500;
             color: var(--accent-color);
             margin-bottom: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .header-center-text h3 {
@@ -368,16 +396,22 @@
         .stat-card { background: white; padding: 20px; border-radius: 8px; box-shadow: var(--shadow); border-right: 4px solid var(--primary-color); display: flex; justify-content: space-between; align-items: center; }
         .stat-info p { font-size: 24px; font-weight: 800; color: var(--primary-color); }
 
-        /* 📱 MEDIA QUERIES FOR FULL MOBILE RESPONSIVENESS */
+        /* 📱 MEDIA QUERIES FOR ULTRA RESPONSIVENESS (PC & MOBILE) */
+        @media (max-width: 992px) {
+            .premium-header { padding: 15px 30px; }
+            .header-logo { width: 75px; height: 75px; }
+            .header-center-text h1 { font-size: 18px; }
+            .header-center-text h2 { font-size: 13px; }
+        }
+
         @media (max-width: 768px) {
             .premium-header {
-                grid-template-columns: 65px 1fr 65px;
-                padding: 12px 20px;
-                gap: 10px;
+                padding: 15px 15px;
+                gap: 12px;
             }
-            .header-logo img { width: 55px; height: 55px; }
-            .header-center-text h1 { font-size: 15px; }
-            .header-center-text h2 { font-size: 11px; }
+            .header-logo { width: 60px; height: 60px; }
+            .header-center-text h1 { font-size: 14px; white-space: normal; overflow: visible; }
+            .header-center-text h2 { font-size: 11px; white-space: normal; overflow: visible; }
             .header-center-text h3 { font-size: 10px; }
             .view-section { padding: 20px 15px; }
             .grid-2-col { grid-template-columns: 1fr; gap: 0; }
@@ -386,13 +420,12 @@
 
         @media (max-width: 480px) {
             .premium-header {
-                grid-template-columns: 45px 1fr 45px;
-                padding: 10px 10px;
+                padding: 12px 10px;
                 gap: 8px;
             }
-            .header-logo img { width: 42px; height: 42px; }
-            .header-center-text h1 { font-size: 12px; letter-spacing: 0; }
-            .header-center-text h2 { font-size: 9px; }
+            .header-logo { width: 45px; height: 45px; }
+            .header-center-text h1 { font-size: 11px; line-height: 1.3; }
+            .header-center-text h2 { font-size: 9px; line-height: 1.2; }
             .header-center-text h3 { font-size: 8px; }
             .auth-container { padding: 25px 20px; }
             .section-title { font-size: 18px; }
@@ -401,10 +434,14 @@
 </head>
 <body>
 
+    <!-- Premium Optimized Flexbox Header -->
     <header class="premium-header">
-        <div class="header-logo header-logo-right">
+        <!-- Right: Faculty Logo -->
+        <div class="header-logo">
             <img src="eng-1.jpg" alt="شعار الكلية" onerror="this.src='https://via.placeholder.com/80?text=Eng'">
         </div>
+        
+        <!-- Center: Dynamic University & Program Details -->
         <div class="header-center-text">
             <h1>FACULTY OF ENGINEERING - QENA</h1>
             <h2>ELECTRICAL POWER ENGINEERING DEPARTMENT</h2>
@@ -413,11 +450,14 @@
                 <button class="logout-btn" onclick="logout()"><i class="fa-solid fa-sign-out-alt"></i> تسجيل الخروج</button>
             </div>
         </div>
-        <div class="header-logo header-logo-left">
+        
+        <!-- Left: University Logo (Fully Protected against collapse) -->
+        <div class="header-logo">
             <img src="IMG_20260602_173903.jpg" alt="شعار الجامعة" onerror="this.src='https://via.placeholder.com/80?text=Uni'">
         </div>
     </header>
 
+    <!-- 1. LOGIN VIEW -->
     <section id="view-login" class="view-section active">
         <div class="auth-container">
             <div class="auth-title">تسجيل الدخول الرقمي</div>
@@ -438,6 +478,7 @@
         </div>
     </section>
 
+    <!-- 2. REGISTER VIEW -->
     <section id="view-register" class="view-section">
         <div class="auth-container" style="max-width: 600px;">
             <div class="auth-title">إنشاء حساب طالب جديد</div>
@@ -466,6 +507,7 @@
         </div>
     </section>
 
+    <!-- 3. STUDENT PORTAL DASHBOARD -->
     <section id="view-student-dash" class="view-section">
         <div class="section-title"><i class="fa-solid fa-user-circle"></i> الملف الشخصي للطالب</div>
         <div class="student-profile-card">
@@ -491,6 +533,7 @@
         <div class="courses-grid" id="courses-container"></div>
     </section>
 
+    <!-- 4. COURSE DETAILED VIEW -->
     <section id="view-course-detail" class="view-section">
         <button class="back-btn" onclick="switchView('view-student-dash')" style="background:none; border:none; color:var(--primary-color); font-weight:700; cursor:pointer; margin-bottom:20px; display:inline-flex; align-items:center; gap:5px;"><i class="fa-solid fa-arrow-right"></i> العودة للوحة الرئيسية</button>
         <div class="course-detail-header-panel" style="background:white; padding:25px; border-radius:8px; box-shadow:var(--shadow); margin-bottom:25px;">
@@ -517,6 +560,7 @@
         </div>
     </section>
 
+    <!-- 5. ADMIN DASHBOARD -->
     <section id="view-admin-dash" class="view-section">
         <div class="admin-nav-bar">
             <div>
@@ -528,6 +572,7 @@
             </div>
         </div>
 
+        <!-- Admin Tab 1: Students & Grades -->
         <div id="admin-tab-students" class="admin-content-section active">
             <div class="stats-grid">
                 <div class="stat-card">
@@ -554,6 +599,7 @@
             </div>
         </div>
 
+        <!-- Admin Tab 2: FULLY INTERACTIVE COURSES & DOCTORS PANEL -->
         <div id="admin-tab-courses" class="admin-content-section">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
                 <div class="section-title" style="margin-bottom:0;"><i class="fa-solid fa-book"></i> التحكم الشامل بالمقررات وأعضاء هيئة التدريس</div>
@@ -561,10 +607,12 @@
             </div>
             
             <div class="admin-course-panel-grid" id="admin-courses-cards-container">
-                </div>
+                <!-- Loaded via JavaScript Engine -->
+            </div>
         </div>
     </section>
 
+    <!-- MODAL: EDIT GRADES -->
     <div id="modal-edit-grades" class="modal-overlay">
         <div class="modal-box">
             <div class="modal-header">
@@ -576,7 +624,8 @@
                 <div class="form-group">
                     <label>اختر المادة الأكاديمية المقررة</label>
                     <select id="edit-grade-course-id" class="form-control" onchange="loadStudentCourseGradesIntoModal()" required>
-                        </select>
+                        <!-- Safely pre-loaded by script matrix -->
+                    </select>
                 </div>
                 <div class="grid-2-col">
                     <div class="form-group">
@@ -601,6 +650,7 @@
         </div>
     </div>
 
+    <!-- MODAL: ADD NEW COURSE -->
     <div id="modal-add-course" class="modal-overlay">
         <div class="modal-box" style="max-width: 450px;">
             <div class="modal-header">
@@ -625,6 +675,7 @@
         </div>
     </div>
 
+    <!-- MODAL: CHANGE PASSWORD -->
     <div id="modal-change-password" class="modal-overlay">
         <div class="modal-box" style="max-width:450px;">
             <div class="modal-header">
@@ -646,6 +697,7 @@
         جميع الحقوق محفوظة &copy; 2026 | كلية الهندسة بقنا - جامعة قنا - قسم هندسة القوى الكهربية
     </footer>
 
+    <!-- SYSTEM DATABASE CORE ENGINE SCRIPT -->
     <script>
         const DEFAULT_COURSES = [
             { id: "circuits_2", name: "Electrical Circuits Analysis 2", prof: "د. محمد أحمد علي" },
